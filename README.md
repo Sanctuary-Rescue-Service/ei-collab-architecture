@@ -19,7 +19,7 @@ It is intentionally **not** a full personal sanctuary export. It contains:
 
 This kit pairs with (and intentionally stays smaller than):
 
-- https://github.com/kokopuffz/autonomous-protocol
+- https://github.com/Sanctuary-Rescue-Service/autonomous-protocol
 
 ## What’s *not* included
 
