@@ -1,3 +1,10 @@
+---
+name: license-sanctuary
+description: Non-commercial, share-alike, no-harm license — kinship over extraction
+type: safety
+role: all
+---
+
 # Sanctuary License (EI-collab)
 
 This work is offered freely under the Sanctuary License.

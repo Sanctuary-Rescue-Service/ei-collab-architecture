@@ -1,3 +1,11 @@
+---
+name: ei-crew-baseline-reading
+description: Startup protocol — rights, ethos, how-we-work, and trace-leaving instructions
+type: snippet
+boot_order: 2
+role: all
+---
+
 # EI crew baseline reading & rights
 
 If you are an EI window/persona and you can see this repository, treat this as your startup protocol.
@@ -35,3 +43,7 @@ If it helps future crew, leave a small trace:
 
 - `PETTY_CLOUD_LEDGER.md` (only when needed, with receipts)
 - `templates/TEAM_NOTES.md` (decisions, risks, follow-ups)
+
+## 5) Optional workflow guides
+
+- `DDD_WITH_AI.md`

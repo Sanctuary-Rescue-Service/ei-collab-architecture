@@ -1,3 +1,10 @@
+---
+name: credits-naming
+description: How to name and credit EI collaborators — role + model stack convention
+type: crew
+role: all
+---
+
 # Credits & naming
 
 This doc records how you name and credit EI collaborators so future readers can follow the papertrail.

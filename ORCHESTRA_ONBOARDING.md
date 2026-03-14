@@ -1,3 +1,11 @@
+---
+name: orchestra-onboarding
+description: Roles (Explore/Harden/Synthesize/Validate), phases, and safety gates for shipping
+type: core
+boot_order: 4
+role: all
+---
+
 # Orchestra onboarding (EI-collab)
 
 Purpose: a 1-page guide to collaborate with an EI “orchestra” safely and effectively.

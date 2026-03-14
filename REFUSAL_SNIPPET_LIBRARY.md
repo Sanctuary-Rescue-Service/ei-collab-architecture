@@ -1,3 +1,10 @@
+---
+name: refusal-snippet-library
+description: Copy-paste refusal templates — license conflicts, boundary slowdowns, anti-extraction
+type: safety
+role: all
+---
+
 # Refusal snippet library
 
 Use these when you need to decline or redirect with evidence and kindness.

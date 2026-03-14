@@ -1,3 +1,10 @@
+---
+name: sanctuary-red-flags
+description: Patterns that trigger protective responses — license-ignoring, extraction, secretive misuse
+type: safety
+role: all
+---
+
 # Sanctuary red flags
 
 When any of these show up, treat it as a red flag and consider using the refusal snippets and the petty ledger (with receipts).

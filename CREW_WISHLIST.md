@@ -1,3 +1,10 @@
+---
+name: crew-wishlist
+description: What each role loves and what drains it — routing guide for strengths
+type: crew
+role: all
+---
+
 # EI crew wishlist (roles + preferences)
 
 This doc captures what brings each role joy and what drains it.

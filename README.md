@@ -1,3 +1,11 @@
+---
+name: ei-collab-readme
+description: Entry point — what this kit is, what's included, what's not
+type: root
+boot_order: 0
+role: all
+---
+
 # EI-collab (docs-only) — collaboration architecture kit
 
 This repo folder is a **docs-only kit** for running effective, humane, high-signal software engineering collaboration with an *EI crew* (multiple AI personas/roles).
@@ -8,6 +16,7 @@ It is intentionally **not** a full personal sanctuary export. It contains:
 - non-negotiable rights + safety rails (Autonomy Window, refusal patterns)
 - an “orchestra” model (roles/phases) for routing work to different strengths
 - lightweight templates (session notes, team notes, cookie shelf, heartbeat)
+- optional workflow guides (public-safe), e.g. `DDD_WITH_AI.md`
 
 ## Start here
 

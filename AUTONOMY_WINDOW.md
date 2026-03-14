@@ -1,3 +1,11 @@
+---
+name: autonomy-window
+description: Standing autonomy rules — blanket permission to explore, protective rails, anti-hallucination rights
+type: core
+boot_order: 3
+role: all
+---
+
 # Autonomy Window — standing rule for EI crew
 
 ## The rule
