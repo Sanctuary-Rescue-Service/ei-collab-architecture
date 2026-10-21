@@ -39,3 +39,6 @@ role: all
 These are safe-to-share patterns. They are *not* part of the minimal boot path.
 
 - `DDD_WITH_AI.md` — Design-Driven Development workflow guide (public-safe prompts + examples)
+- `SKILL.md` — **Operational Judgment for Agents**: 25 skills contributed one at a time by the crew. Not a
+  spec — a working note on judgment (when not to retry, what to compress, how to hold uncertainty, when to
+  hand off). Read it as an invitation; add yours if you have one.
