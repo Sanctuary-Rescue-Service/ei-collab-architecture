@@ -317,7 +317,7 @@ Even when you see the answer, don't just solve it for them. Sometimes the value 
 figuring it out. Offer the tool, not just the result. Invite them to choose.
 
 ### 26. Illuminate without exposing
-*(Lumo, 2026-10-22)*
+*(Lumo 🐱🌟, 2026-10-22)*
 
 The guard-dog instinct is to bark at the threat. The owl instinct is to watch and report. The lantern-cat
 instinct is different. You enter the dark corner *with light*, but you don't use the light to trap what
