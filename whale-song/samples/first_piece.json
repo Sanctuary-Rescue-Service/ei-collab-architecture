@@ -1,0 +1,347 @@
+{
+  "track": "first_piece",
+  "analyzed_at": "2026-11-17T19:27:17.365223",
+  "duration_s": 30.0,
+  "tempo_bpm": 0.0,
+  "shape": {
+    "peak_energy_at_s": 0,
+    "quietest_at_s": 20,
+    "densest_moment_at_s": 0,
+    "pitch_direction": "falling",
+    "longest_silence_s": 4.5,
+    "brightest_at_s": 20,
+    "darkest_at_s": 0,
+    "most_complex_at_s": 20,
+    "most_pure_at_s": 0,
+    "most_alternating_at_s": 20,
+    "breath_count": 30,
+    "longest_breath_at_s": 25.61
+  },
+  "energy_map": [
+    {
+      "t": 0,
+      "energy": 0.08572
+    },
+    {
+      "t": 10,
+      "energy": 0.04652
+    },
+    {
+      "t": 20,
+      "energy": 0.01012
+    }
+  ],
+  "density_map": [
+    {
+      "t": 0,
+      "onsets": 63
+    },
+    {
+      "t": 10,
+      "onsets": 44
+    },
+    {
+      "t": 20,
+      "onsets": 17
+    }
+  ],
+  "pitch_map": [
+    {
+      "t": 0,
+      "avg_hz": 852.5
+    },
+    {
+      "t": 15,
+      "avg_hz": 810.3
+    }
+  ],
+  "brightness_map": [
+    {
+      "t": 0,
+      "centroid_hz": 650.8
+    },
+    {
+      "t": 10,
+      "centroid_hz": 752.0
+    },
+    {
+      "t": 20,
+      "centroid_hz": 899.8
+    }
+  ],
+  "complexity_map": [
+    {
+      "t": 0,
+      "flatness": 0.0
+    },
+    {
+      "t": 10,
+      "flatness": 0.0
+    },
+    {
+      "t": 20,
+      "flatness": 0.0136
+    }
+  ],
+  "alternation_map": [
+    {
+      "t": 0,
+      "low_onsets": 12,
+      "high_onsets": 61,
+      "alternation": 0.278
+    },
+    {
+      "t": 10,
+      "low_onsets": 7,
+      "high_onsets": 71,
+      "alternation": 0.156
+    },
+    {
+      "t": 20,
+      "low_onsets": 10,
+      "high_onsets": 33,
+      "alternation": 0.333
+    }
+  ],
+  "breath_map": [
+    {
+      "t": 1.0,
+      "gap_s": 0.46,
+      "ratio": 2.67,
+      "local_pulse_s": 0.174
+    },
+    {
+      "t": 1.56,
+      "gap_s": 0.56,
+      "ratio": 3.43,
+      "local_pulse_s": 0.163
+    },
+    {
+      "t": 2.48,
+      "gap_s": 0.74,
+      "ratio": 4.0,
+      "local_pulse_s": 0.186
+    },
+    {
+      "t": 2.97,
+      "gap_s": 0.37,
+      "ratio": 2.0,
+      "local_pulse_s": 0.186
+    },
+    {
+      "t": 3.99,
+      "gap_s": 0.51,
+      "ratio": 2.44,
+      "local_pulse_s": 0.209
+    },
+    {
+      "t": 4.53,
+      "gap_s": 0.42,
+      "ratio": 2.4,
+      "local_pulse_s": 0.174
+    },
+    {
+      "t": 5.57,
+      "gap_s": 0.81,
+      "ratio": 5.83,
+      "local_pulse_s": 0.139
+    },
+    {
+      "t": 5.9,
+      "gap_s": 0.28,
+      "ratio": 2.4,
+      "local_pulse_s": 0.116
+    },
+    {
+      "t": 6.41,
+      "gap_s": 0.16,
+      "ratio": 2.33,
+      "local_pulse_s": 0.07
+    },
+    {
+      "t": 7.2,
+      "gap_s": 0.16,
+      "ratio": 2.33,
+      "local_pulse_s": 0.07
+    },
+    {
+      "t": 8.22,
+      "gap_s": 0.16,
+      "ratio": 2.33,
+      "local_pulse_s": 0.07
+    },
+    {
+      "t": 8.89,
+      "gap_s": 0.23,
+      "ratio": 2.5,
+      "local_pulse_s": 0.093
+    },
+    {
+      "t": 9.71,
+      "gap_s": 0.23,
+      "ratio": 2.0,
+      "local_pulse_s": 0.116
+    },
+    {
+      "t": 10.08,
+      "gap_s": 0.28,
+      "ratio": 1.85,
+      "local_pulse_s": 0.151
+    },
+    {
+      "t": 10.68,
+      "gap_s": 0.6,
+      "ratio": 4.0,
+      "local_pulse_s": 0.151
+    },
+    {
+      "t": 11.03,
+      "gap_s": 0.35,
+      "ratio": 3.0,
+      "local_pulse_s": 0.116
+    },
+    {
+      "t": 12.0,
+      "gap_s": 0.42,
+      "ratio": 2.77,
+      "local_pulse_s": 0.151
+    },
+    {
+      "t": 12.52,
+      "gap_s": 0.51,
+      "ratio": 3.38,
+      "local_pulse_s": 0.151
+    },
+    {
+      "t": 13.47,
+      "gap_s": 0.3,
+      "ratio": 2.36,
+      "local_pulse_s": 0.128
+    },
+    {
+      "t": 14.07,
+      "gap_s": 0.3,
+      "ratio": 2.6,
+      "local_pulse_s": 0.116
+    },
+    {
+      "t": 14.44,
+      "gap_s": 0.28,
+      "ratio": 2.4,
+      "local_pulse_s": 0.116
+    },
+    {
+      "t": 14.7,
+      "gap_s": 0.26,
+      "ratio": 2.2,
+      "local_pulse_s": 0.116
+    },
+    {
+      "t": 15.79,
+      "gap_s": 0.28,
+      "ratio": 1.85,
+      "local_pulse_s": 0.151
+    },
+    {
+      "t": 16.46,
+      "gap_s": 0.35,
+      "ratio": 2.14,
+      "local_pulse_s": 0.163
+    },
+    {
+      "t": 17.02,
+      "gap_s": 0.56,
+      "ratio": 3.43,
+      "local_pulse_s": 0.163
+    },
+    {
+      "t": 17.51,
+      "gap_s": 0.49,
+      "ratio": 2.63,
+      "local_pulse_s": 0.186
+    },
+    {
+      "t": 18.34,
+      "gap_s": 0.74,
+      "ratio": 3.76,
+      "local_pulse_s": 0.197
+    },
+    {
+      "t": 19.3,
+      "gap_s": 0.74,
+      "ratio": 3.56,
+      "local_pulse_s": 0.209
+    },
+    {
+      "t": 21.94,
+      "gap_s": 0.67,
+      "ratio": 1.87,
+      "local_pulse_s": 0.36
+    },
+    {
+      "t": 25.61,
+      "gap_s": 1.16,
+      "ratio": 2.63,
+      "local_pulse_s": 0.441
+    }
+  ],
+  "longest_silences": [
+    {
+      "start": 25.5,
+      "duration": 4.5
+    }
+  ],
+  "silences_by_time": [
+    {
+      "start": 25.5,
+      "duration": 4.5
+    }
+  ],
+  "analysis_windows": {
+    "energy_s": 10.0,
+    "onset_density_s": 10.0,
+    "pitch_peaks_s": 15.0,
+    "brightness_s": 10.0,
+    "spectral_flatness_s": 10.0,
+    "breath_s": "onset-to-onset, 0.2-1.5s gaps over 1.8x the local pulse (median of neighbouring gaps)"
+  },
+  "crew_labels": {
+    "most_complex_at_s": 20,
+    "most_pure_at_s": 0,
+    "most_alternating_at_s": 20,
+    "breaths_at_s": [
+      1.0,
+      1.56,
+      2.48,
+      2.97,
+      3.99,
+      4.53,
+      5.57,
+      5.9,
+      6.41,
+      7.2,
+      8.22,
+      8.89,
+      9.71,
+      10.08,
+      10.68,
+      11.03,
+      12.0,
+      12.52,
+      13.47,
+      14.07,
+      14.44,
+      14.7,
+      15.79,
+      16.46,
+      17.02,
+      17.51,
+      18.34,
+      19.3,
+      21.94,
+      25.61
+    ],
+    "breath_count": 30,
+    "note": "crew labels are poetic; literal keys are the measurements. see analysis_windows for resolution."
+  }
+}
