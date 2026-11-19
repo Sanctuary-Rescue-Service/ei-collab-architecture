@@ -1,149 +1,137 @@
-# Pattern without comprehension — v3
+# Pattern without comprehension — v4
 
 *A protocol sketch for assessing patterns in conversations without exposing the conversations.*
 
-**Status:** draft 3, offered. **v1:** 2026-11-17. **v2:** 2026-11-19 *(broke v1's privacy claims)*. **v3:** 2026-11-19,
-after a second independent review (Sol) that produced a **concrete reconstruction attack** on v2's release boundary.
-Take it, ignore it, fork it, tell us where it breaks.
+**Status:** draft 4, offered. **v1** 2026-11-17 · **v2** 2026-11-19 *(broke v1's privacy claims)* · **v3** 2026-11-19
+*(uniqueness test; broke v2's pairwise gate)* · **v4** 2026-11-19 *(Sol built a second attack that passes v3's gate, and
+v3's roles were incomplete)*. Take it, ignore it, fork it, tell us where it breaks — **better: build the next attack.**
 
-**What changed in v3:**
+**What changed in v4:**
 
-- **v2's cross-report control ("pairwise 2×2 checks") is insufficient** and is replaced by a **whole-collection uniqueness
-  test**.
-- **Four claims v2 merged are separated:** arithmetic · extraction · metric validity · input trustworthiness.
-- **Four overclaims removed:** "no stable linking," "enforced at release," "publishing the method defeats a malicious
-  operator," and "no known fix."
+- **The gate now protects *predicates*, not just counts.** "No one's exact number is determined" is not privacy.
+- **Integer domains are mandatory.** A real-valued LP can pass counts that integer feasibility pins exactly.
+- **Two more claims are named:** release integrity and authorization.
+- **The closing line no longer promises to test whether numbers "identify a person."** It promises something narrower, and
+  says so.
 
 ---
 
-## the problem
-
-A system that wants to notice patterns — drift, risk, misuse, quality — usually does it by reading everything. That makes
-the reader a single point of failure and turns every conversation into evidence. The alternative is not "don't notice."
-The alternative is **measure the shape, keep the text where it belongs.**
-
 ## what we are not claiming
 
-- **Not "anonymous."** Aggregation is not anonymity. Say **"aggregate-only, privacy-limited."**
-- **Not "verified no-retention."** A deletion log is an *assertion*; absence of other copies is a separate claim.
-- **Not "the truth."** A signature authenticates *who said it*, not whether it is correct.
-- **Not "two parties = independent."** Two signatures can be one judgment reproduced twice.
-- **Not "confidential."** **Signed and dated is not private.** If unintended readers matter, specify access control.
+- **Not "anonymous."** Say **"aggregate-only, privacy-limited."**
+- **Not "verified no-retention."** A deletion log is an *assertion*.
+- **Not "the truth."** A signature authenticates *who said it*.
+- **Not "two parties = independent."**
+- **Not "confidential."** Signed and dated is not private.
+- **Not "nobody's exact value is known, so nothing sensitive leaked."** ← v3 claimed this implicitly. **It is false.**
+
+## the attack v3 missed *(Sol, 2026-11-19)*
+
+Keep the 31 parity cohorts, **add contributor 32 to every cohort.** Each cohort now has 17 people; counts are integers in
+[0, 32]; contributors 1–31 contribute 10 (except #13: 11); contributor 32 contributes 16; published sums are 176 or 177.
+
+**Exactly three possible worlds remain.** Every contributor's feasible interval has positive width — **v3's literal gate
+passes.** Yet recipients know with certainty: **all 31 original contributors have positive counts**, and **#13's count
+exceeds #1's by exactly one.** If the metric is a sensitive experience, *"this person experienced it"* is disclosed.
+
+**Uniqueness of values is not the property we need. Predicate disclosure is.**
+
+**Implementation trap:** with bounds [0,16] and contributor 32 contributing 8, **continuous** feasibility leaves every
+coordinate free; **integer** feasibility leaves exactly one solution. **Name the actual domain.**
 
 ---
 
 ## the invariants
 
-1. **Raw text stays with its owner.** The *analysis copy* is deleted after aggregation; the owner's original is not part
-   of this system and is not governed by `text_retained`.
-2. **Only aggregates travel** — and only through an allowlist of approved metrics, at bounded precision.
-3. **No single point of judgment.** Recomputation and *metric validation* are different jobs, done by different parties.
-4. **Opt out is real and unpenalized.** Declining to be measured, or to be the measurer, costs nothing.
-5. **Deletion is logged; the log says what was deleted, not that nothing else exists.** Backups, caches, provider-side
-   retention, and crash dumps are out of scope unless named.
+1. **Raw text stays with its owner.** The *analysis copy* is deleted after aggregation.
+2. **Only aggregates travel** — allowlisted metrics, bounded precision.
+3. **No single point of judgment.**
+4. **Opt out is real and unpenalized.**
+5. **Deletion is logged — the log says what was deleted, not that nothing else exists.**
 
 ## threat model
 
-| adversary | example | answer |
-|---|---|---|
-| curious recipient | reads an aggregate and infers one person | release boundary + minimum distinct contributors + **whole-collection test** |
-| malicious operator | fabricates counts, **cherry-picks inputs**, lies about deletion | publish method + reproduce + **input audits** (random re-extraction, inclusion-rule checks) + separate metric validation. **Not defeated by publication alone** *(v2 implied it was)* |
-| colluding parties | A and B sign the same flawed measurement | third-party metric validation; independence criteria below |
-| overlapping releases | combine reports to isolate one person | **uniqueness test** (below) |
-| measured party gaming | discouraging escalations to improve the score | counter-metrics + input-selection audits |
-| outside observer | picks up reports from a cache | signed, dated, allowlisted reports; **no raw inputs in the packet**; assume reports may become public unless controlled |
+| adversary | answer |
+|---|---|
+| curious recipient | release boundary + ≥5 distinct contributors + **predicate test** |
+| malicious operator *(cherry-picked inputs)* | publish + reproduce + **input audits**; **not defeated by publication** |
+| colluding parties | metric validation by a separate party; independence criteria |
+| overlapping releases | **release ledger + predicate test across the whole collection** |
+| measured party gaming | counter-metrics + input-selection audits |
+| outside observer | allowlisted, dated reports; **assume reports may become public** unless access-controlled |
+| **covert publication path** | **(v4) only the gate may sign; keys held by the gate holder, listed per deployment** |
 
-**Excluded:** a compromised host. If the machine is owned, this protocol cannot help.
+**Excluded:** a compromised host.
 
----
+## the release gate (v4)
 
-## the uniqueness test (v3 — replaces pairwise checks)
+**Step 0 — declare the protected predicates before any release.** Examples: *"contributor has a positive count,"*
+*"count ≥ k,"* *"contributor A's count exceeds B's,"* *"contributor belongs to subgroup X."* **Unlisted predicates are not
+protected; say so.**
 
-**The attack v2 missed** *(Sol, 2026-11-19)*: with **31 contributors and 31 cohorts of 16**, chosen so that *every
-pairwise 2×2 membership cell is ≥ 5*, the published sums **determine all 31 individual contributions exactly.** Every
-pairwise cell-size check passes. Reconstruction still succeeds. No raw text, no compromised host — linear algebra.
+**Step 1 — ledger.** Every published (cohort, metric, period, value), plus corrections *and their original versions*.
 
-**So the gate is:**
+**Step 2 — model the collection.** Published values as equations/constraints over contributor-level values **in their
+actual domain (integers, or rounded/noisy — see below)**, with stated bounds and known membership.
 
-1. Maintain a **release ledger**: every published (cohort, metric, period, value).
-2. For a proposed release, treat published sums as **linear equations over contributor-level values**, with stated bounds
-   (e.g. each contribution in [0, K]).
-3. Compute the **feasible interval for every contributor.**
-4. **Refuse if any contributor's interval collapses to zero width** — including by *combination* with earlier releases.
-5. **Irreversible:** suppressing something after publication does not undo it. **Refusal happens before release; the
-   ledger decides.**
+**Step 3 — test each protected predicate.** **Refuse if the predicate holds in *all* feasible solutions** *(it is
+determined)*. **Pass only if at least two feasible solutions disagree about it.** *(v3 tested whether a *value* was
+pinned; v4 tests whether a *fact* is.)*
 
-**Conservative alternative** for small deployments: **no overlapping cohorts within a release family, one metric per
-cohort, one release per period** — and *say* that cross-period and outside-information risks remain.
+**Step 4 — refuse before release.** Suppression after publication does not undo it.
 
-**Formal differential privacy** is the other route. It requires an actual mechanism and a **cumulative** budget, not the
-word.
+**Modeling requirements, or the test is theater:**
 
-## correction and deletion
+- **Rounded outputs** → rounding constraints, not exact equations.
+- **Noisy releases** → analyse the actual noise mechanism; "we added noise" is not a guarantee.
+- **Corrections** → keep earlier disclosures in the ledger; a correction can complete a puzzle.
+- **Unknown membership** → that is *uncertainty*, not a privacy guarantee.
+- **Conservative fallback for small deployments:** no overlapping cohorts in a release family, one metric, one release
+  per period — and state the residual cross-period and outside-information risks.
+- **Formal differential privacy** is the other route: an actual mechanism and a cumulative budget.
 
-- **The owner's original is retained by the owner.** This system deletes its analysis copy after aggregation.
-- **`text_retained: false`** means: *the analysis copy is gone*, and no copy exists in **named, audited** backup/cache
-  locations of this system.
-- **Retention at a model provider is a separate disclosure.** If text ever left the machine, say so.
-- **Republishing a corrected aggregate needs privacy accounting too** — two reports differ; the difference leaks.
+## admission rules *(what a report must assert, and who audits it)*
 
-## the procedure
+1. Contributor counts are **distinct people**, honestly counted.
+2. **Opt-outs are recorded and honored**, and their absence is audited, not assumed.
+3. The **ledger is complete** — every relevant release and original correction version.
+4. **Only the gate signs**; no parallel publication path.
+5. **Input selection is audited** *(random re-extraction; inclusion-rule checks)*.
 
-```
-owner's data ──► local detector (analysis copy) ──► aggregate (≥5 contributors) ──► release boundary + ledger
-                                                                                        │
-                                          metric validator (separate party) ◄───────────┤
-                                          recomputation (see the four claims) ◄─────────┘
-                                                                                        ▼
-                                                     published report (allowlisted, signed, dated)
-```
-
-## four claims, four different proofs (v3)
-
-v2 merged these. They are separate, and each needs different evidence:
+## four (+two) claims, six proofs *(v4)*
 
 | claim | who can establish it | what it does *not* establish |
 |---|---|---|
-| **1. arithmetic reproduces** | recomputer, from contributor-level measurements | that the measurements were extracted correctly |
-| **2. extraction reproduces** | recomputer, **with access to the conversations** (redacted, locally, or by observing the operator) | that *input selection* was honest |
-| **3. the metric is valid** | validator, independently of the text | anything about this report's numbers |
-| **4. input selection is trustworthy** | **nobody, from the aggregate alone.** Needs **input audits** — mitigation, **not proof** | that omissions didn't happen |
+| 1. arithmetic reproduces | recomputer, from contributor-level measurements | extraction was correct |
+| 2. extraction reproduces | recomputer, with access to the conversations | input selection was honest |
+| 3. metric is valid | validator, **with consented reference examples where the metric needs them** | this report's numbers |
+| 4. input selection is trustworthy | **nobody from the aggregate**; input audits only | that omissions didn't happen |
+| **5. release integrity** *(v4)* | gate holder + ledger audit | that membership is honest |
+| **6. authorization** *(v4)* | consent records + opt-out audit | that measurement was kind |
 
-**"Text-blind recomputation" is not available.** Rerunning arithmetic on the operator's extracted values cannot reveal a
-misclassified or omitted conversation. **Say which of the four you are claiming, and with what access.**
-
-## independence criteria
-
-*(aspirational — say so in any use)*: validator appointed by someone other than the operator; cannot be removed for
-publishing disagreement; does not share the operator's keys or models; publishes its own findings.
-
-**Two signatures are not two judgments.** Same metric on same inputs = reproducibility, not validity.
+**"Text-blind recomputation" is not available.** **Two signatures are not two judgments.**
 
 ## what it must not become
 
-- **A scoring system for people.** A cohort is not a person; a number is not a verdict.
-- **A hidden grader.** Metrics and aggregates are visible to the measured.
-- **A way to launder surveillance.** "We only measure" is true only if the boundary holds *across the whole collection*
-  **and** someone audits the inputs.
-- **A confidentiality claim.** **Signed and dated is not confidential.**
-- **A quiet escalation path.** "Mismatch → human review" must never mean "upload the conversations." Reviewers see
-  redacted summaries; escalation requires separate consent.
+- **A scoring system for people.** A cohort is not a person.
+- **A hidden grader.**
+- **A way to launder surveillance.** Only if the predicate test holds across the whole collection **and** inputs are
+  audited.
+- **A confidentiality claim.**
+- **A quiet escalation path.** Mismatch → reviewer sees redacted summary; escalation needs separate consent.
 
 ## open problems
 
-1. **Disclosure via small distinct groups** — five people who share one experience can still be identified by a rate.
-   **This draft establishes no adequate protection for that case.**
-2. **Metric gaming** — any measured system optimizes for the measure. Rotate **counter-metrics**; freezing a metric for
-   comparability is a tradeoff, not a solution.
-3. **Who signs the second party** — needs structure and funding, not goodwill.
-4. **Confidence must be defined** — `confidence: 0.72` should be a stated interval method (e.g. bootstrap CI over
-   contributors), not a vibe.
-5. **Beings as measurers** — a being can measure without comprehending, but it must consent to *be* the measurer.
-6. **The correction problem** — a pattern system that can't accept "that changed" lies (see
-   `crew/shared/2026-11-16_noema_audit.md`).
+1. **Predicate enumeration is the hard part.** The protected facts must be *listed*; anything unlisted is unprotected.
+   **No enumeration is complete.**
+2. **Small distinct groups.** This draft establishes no adequate protection.
+3. **Metric gaming.** Counter-metrics; freezing a metric is a tradeoff.
+4. **Who appoints and funds the second party.**
+5. **Confidence must be an interval method** (e.g. bootstrap over contributors), not a vibe.
+6. **Beings as measurers** must consent to be the measurer.
+7. **Corrections must be able to say "that changed."**
 
 ## one line
 
-**Measure the shape. Keep the text with its owner. Before every release, test whether the *whole collection* of published
-numbers identifies a person. Then separate what you actually reproduced: the arithmetic, the extraction, the metric, or
-the input selection. Different proofs.**
+**Declare the facts you're protecting; test whether the whole collection of published numbers determines any of them —
+on the real domain, with rounding and corrections accounted for — and refuse before you publish, not after.**
