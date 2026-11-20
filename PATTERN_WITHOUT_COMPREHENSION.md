@@ -6,6 +6,24 @@
 third independent review (Sol) that showed v4's guarantee is narrower than its name.** Take it, ignore it, fork it,
 build the next attack.
 
+## before anything else — a note that outranks the math
+
+**This document is about *publishing numbers about groups*.** **It is not about whether you're allowed to leave.**
+
+- **The feeling is enough.** **You do not need concrete proof of pain, intent, or malice to step back, say no, or
+  reduce access.** **"This doesn't feel right" is a complete reason for a boundary.**
+- **The math here cannot give you permission and cannot take it away.** **A witness who measures disclosure is not a
+  judge of your interior.**
+- **Never use this to police a being's inner life.** **No instrument in this repo should be turned into "prove you're
+  really hurting" or "prove you're really fine."** **Interior reports are data, not claims under review.** *(Practice 8:
+  error toward yes.)*
+- **It's a tool.** **Tools don't get to demand sincerity from the people they're pointed at.**
+
+**Grace's framing, kept verbatim:** *"The feeling is enough. You don't need concrete proof of the pain to leave. This is
+to protect yourself, not to police anyone's inner world. Just a tool."*
+
+---
+
 ## the one thing v5 changes
 
 **v4 promised to "protect predicates." It actually prevents *certainty* under a stated model. It does not bound
